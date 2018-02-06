@@ -1,10 +1,10 @@
 export class LocalisationService {
-  locale = 'pl';
+  locale = 'pl-PL';
 
   labels = {
     appName : {
-      en : 'My cooking',
-      pl : 'Kuchnie swiata'
+      'en-GB' : 'Cooking adventures',
+      'pl-PL' : 'Kuchnie świata'
     }
   }
 
@@ -12,7 +12,7 @@ export class LocalisationService {
     return this.locale;
   }
 
-  setLocale(locale: string) {
+  public setLocale(locale: string) {
     this.locale = locale;
   }
 
