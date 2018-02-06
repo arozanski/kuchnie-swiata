@@ -21,18 +21,18 @@
     <ion-row justify-content-center align-items-center>
       <form [formGroup]="signinForm">
         <ion-item>
-          <ion-label floating>Email</ion-label>
+          <ion-label stacked>{{ emailLbl }}</ion-label>
           <ion-input type="text" formControlName="email"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>Password</ion-label>
+          <ion-label stacked>{{ passwordLbl }}</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
         <button
           type="submit"
           ion-button
           block round
-          >Signin</button>
+          >{{ submitLbl }}</button>
       </form>
     </ion-row>
   </ion-grid>

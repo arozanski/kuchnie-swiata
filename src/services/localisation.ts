@@ -5,6 +5,18 @@ export class LocalisationService {
     appName : {
       'en-GB' : 'Cooking adventures',
       'pl-PL' : 'Kuchnie świata'
+    },
+    email : {
+      'en-GB' : 'Email address',
+      'pl-PL' : 'Adres e-mail'
+    },
+    password : {
+      'en-GB' : 'Password',
+      'pl-PL' : 'Hasło'
+    },
+    submit : {
+      'en-GB' : 'Sign in',
+      'pl-PL' : 'Zaloguj'
     }
   }
 
@@ -12,7 +24,7 @@ export class LocalisationService {
     return this.locale;
   }
 
-  public setLocale(locale: string) {
+  setLocale(locale: string) {
     this.locale = locale;
   }
 
@@ -20,7 +32,7 @@ export class LocalisationService {
     return this.labels[label][locale];
   }
 
-  public localise(label: string) {
+  localise(label: string) {
     return this.getLabel(label, this.getLocale());
   }
 }

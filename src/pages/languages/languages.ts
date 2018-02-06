@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular'
+
+import { LocalisationService } from '../../services/localisation';
 
 @Component({
   selector: 'page-languages',
@@ -7,11 +9,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LanguagesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private localisationService: LocalisationService,
+              public viewCtrl: ViewController) {}
+
+  onLanguageChange(locale: string) {
+    this.localisationService.setLocale(locale);
+
+    setTimeout(() => {
+      this.viewCtrl.dismiss();
+    }, 400);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LanguagesPage');
+  isChecked(locale: string) {
+    return this.localisationService.getLocale() === locale;
   }
 
 }

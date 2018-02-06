@@ -14,19 +14,12 @@ import { LocalisationService } from '../../services/localisation';
   templateUrl: 'signin.html',
 })
 export class SigninPage implements OnInit {
-  signinForm: FormGroup;
-  locale = this.localeService.getLocale();
-  appName = this.localeService.localise('appName');
-
-  languages = [{
-      selected: true,
-      label: 'English',
-      locale: 'en-GB',
-    }, {
-      selected: false,
-      label: 'Polski',
-      locale: 'pl-PL',
-    }];
+  signinForm : FormGroup;
+  locale = '';
+  appName = '';
+  emailLbl = '';
+  passwordLbl = '';
+  submitLbl = '';
 
   constructor(private localeService: LocalisationService,
               private globalization: Globalization,
@@ -34,13 +27,16 @@ export class SigninPage implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.refreshLocales();
 
     this.globalization.getPreferredLanguage()
-      .then(res => {
-        let locale = res.value;
+      .then(response => {
+        let locale = response.value;
 
-        if (locale !== 'en-GB') {
+        if (locale === 'en-GB') {
           this.localeService.setLocale(locale);
+          this.locale = locale;
+          this.refreshLocales();
         } else {
           this.localeService.setLocale('pl-PL');
         }
@@ -53,18 +49,26 @@ export class SigninPage implements OnInit {
     let email = null;
     let password = null;
 
-    console.log('current locale', this.localeService.localise('appName'));
-
     this.signinForm = new FormGroup({
       'email': new FormControl(email),
       'password': new FormControl(password)
     });
   }
 
-  onLanguageChange (event: MouseEvent) {
+  onLanguageChange(event: MouseEvent) {
     const popover = this.popoverCtrl.create(LanguagesPage);
 
     popover.present({ev: event});
-    console.log(event);
+    popover.onDidDismiss(() => {
+      this.refreshLocales();
+    });
+  }
+
+  private refreshLocales() {
+    this.locale = this.localeService.getLocale();
+    this.appName = this.localeService.localise('appName');
+    this.passwordLbl = this.localeService.localise('password');
+    this.emailLbl = this.localeService.localise('email');
+    this.submitLbl = this.localeService.localise('submit');
   }
 }
