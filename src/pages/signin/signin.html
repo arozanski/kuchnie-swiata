@@ -1,0 +1,36 @@
+<ion-header no-border>
+  <ion-navbar>
+    <ion-buttons end>
+      <button type="button"
+        ion-button
+        block round
+        class="language"
+        (click) ="onLanguageChange($event)">
+        <img src="../../../assets/imgs/gb.svg"/>
+        <ion-icon name="arrow-dropdown"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+      <form [formGroup]="signinForm">
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <button
+          type="submit"
+          ion-button
+          block round
+          >Signin</button>
+      </form>
+    </ion-row>
+  </ion-grid>
+</ion-content>
