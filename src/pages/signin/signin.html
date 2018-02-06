@@ -22,7 +22,7 @@
       <form [formGroup]="signinForm">
         <ion-item>
           <ion-label stacked>{{ emailLbl }}</ion-label>
-          <ion-input type="text" formControlName="email"></ion-input>
+          <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label stacked>{{ passwordLbl }}</ion-label>
@@ -30,10 +30,20 @@
         </ion-item>
         <button
           type="submit"
+          class="signin"
           ion-button
           block round
+          [disabled]="!signinForm.valid"
           >{{ submitLbl }}</button>
       </form>
+    </ion-row>
+    <ion-row text-center class="signup-links">
+        <div ion-text color="light">{{ signupLine1 }}</div>
+        <div ion-text color="light">{{ signupLine2 }}
+          <a ion-text color="secondary" (click)="onSignupClick()">
+            {{ here }}
+          </a>
+        </div>
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -1,25 +1,32 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LocalisationService } from '../../services/localisation';
 
-@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
 })
-export class SignupPage {
+export class SignupPage implements OnInit {
+  signupForm : FormGroup;
+  emailLbl = this.localeService.localise('email');
+  passwordLbl = this.localeService.localise('password');
+  signupLbl = this.localeService.localise('signup');
+  signupTitle = this.localeService.localise('signupTitle');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private localeService: LocalisationService) {}
+
+  ngOnInit() {
+    this.initializeForm();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
-  }
+  private initializeForm() {
+    let email = null;
+    let password = null;
 
+    this.signupForm = new FormGroup({
+      'email': new FormControl(email, Validators.required),
+      'password': new FormControl(password, Validators.required)
+    });
+  }
 }

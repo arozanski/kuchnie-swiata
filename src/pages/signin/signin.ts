@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
-import { PopoverController } from 'ionic-angular';
+import { PopoverController, NavController } from 'ionic-angular';
 import { Globalization } from '@ionic-native/globalization';
 
 import { LanguagesPage } from '../languages/languages';
+import { SignupPage } from '../signup/signup'
 
 import { LocalisationService } from '../../services/localisation';
 
@@ -15,15 +16,20 @@ import { LocalisationService } from '../../services/localisation';
 })
 export class SigninPage implements OnInit {
   signinForm : FormGroup;
+  signupPage = SignupPage;
   locale = '';
   appName = '';
   emailLbl = '';
   passwordLbl = '';
   submitLbl = '';
+  signupLine1 = '';
+  signupLine2 = '';
+  here = '';
 
   constructor(private localeService: LocalisationService,
               private globalization: Globalization,
-              private popoverCtrl: PopoverController) {}
+              private popoverCtrl: PopoverController,
+              private navCtrl: NavController) {}
 
   ngOnInit() {
     this.initializeForm();
@@ -45,16 +51,6 @@ export class SigninPage implements OnInit {
       .catch(e => console.log(e));
   }
 
-  private initializeForm() {
-    let email = null;
-    let password = null;
-
-    this.signinForm = new FormGroup({
-      'email': new FormControl(email),
-      'password': new FormControl(password)
-    });
-  }
-
   onLanguageChange(event: MouseEvent) {
     const popover = this.popoverCtrl.create(LanguagesPage);
 
@@ -64,11 +60,28 @@ export class SigninPage implements OnInit {
     });
   }
 
+  onSignupClick() {
+    this.navCtrl.push(SignupPage);
+  }
+
+  private initializeForm() {
+    let email = null;
+    let password = null;
+
+    this.signinForm = new FormGroup({
+      'email': new FormControl(email, Validators.required),
+      'password': new FormControl(password, Validators.required)
+    });
+  }
+
   private refreshLocales() {
     this.locale = this.localeService.getLocale();
     this.appName = this.localeService.localise('appName');
     this.passwordLbl = this.localeService.localise('password');
     this.emailLbl = this.localeService.localise('email');
     this.submitLbl = this.localeService.localise('submit');
+    this.signupLine1 = this.localeService.localise('signupLine1');
+    this.signupLine2 = this.localeService.localise('signupLine2');
+    this.here = this.localeService.localise('here');
   }
 }
