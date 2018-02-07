@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators, NgForm } from "@angular/forms";
 
-import { PopoverController, NavController } from 'ionic-angular';
+import {
+  PopoverController,
+  NavController,
+  LoadingController,
+  AlertController,
+} from 'ionic-angular';
 import { Globalization } from '@ionic-native/globalization';
 
 import { LanguagesPage } from '../languages/languages';
-import { SignupPage } from '../signup/signup'
+import { SignupPage } from '../signup/signup';
+import { HomePage } from '../home/home';
 
 import { LocalisationService } from '../../services/localisation';
-
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'page-signin',
@@ -29,7 +35,10 @@ export class SigninPage implements OnInit {
   constructor(private localeService: LocalisationService,
               private globalization: Globalization,
               private popoverCtrl: PopoverController,
-              private navCtrl: NavController) {}
+              private navCtrl: NavController,
+              private authService: AuthService,
+              private loadingCtrl: LoadingController,
+              private alertCtrl: AlertController) {}
 
   ngOnInit() {
     this.initializeForm();
@@ -62,6 +71,29 @@ export class SigninPage implements OnInit {
 
   onSignupClick() {
     this.navCtrl.push(SignupPage);
+  }
+
+  onSignin(form: NgForm) {
+    let value = form.value;
+    const loading = this.loadingCtrl.create({
+      content : this.localeService.localise('signinProgress')
+    });
+
+    loading.present();
+    this.authService.signin(value.email, value.password)
+      .then(() => {
+        loading.dismiss();
+        this.navCtrl.push(HomePage);
+      })
+      .catch((error) => {
+        const alert = this.alertCtrl.create({
+          title: this.localeService.localise('signupError'),
+          message : error.message,
+          buttons : ['Ok']
+        });
+        alert.present();
+        loading.dismiss();
+      });
   }
 
   private initializeForm() {

@@ -49,7 +49,15 @@ export class LocalisationService {
     signupConfirmation : {
       'en-GB' : 'Account successfully created',
       'pl-PL' : 'Rejestracja zakończona pomyślnie'
-    }
+    },
+    signinProgress : {
+      'en-GB' : 'Signing in',
+      'pl-PL' : 'Logowanie'
+    },
+    signinError : {
+      'en-GB' : 'Signin error',
+      'pl-PL' : 'Błąd logowania'
+    },
   }
 
   getLocale() {

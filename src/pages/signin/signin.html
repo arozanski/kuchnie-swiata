@@ -26,7 +26,7 @@
       </ion-item>
     </ion-row>
     <ion-row justify-content-center align-items-center>
-      <form [formGroup]="signinForm">
+      <form [formGroup]="signinForm" #f="ngForm" (ngSubmit)="onSignin(f)">
         <ion-item>
           <ion-label stacked>{{ emailLbl }}</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
