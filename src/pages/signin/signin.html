@@ -15,9 +15,16 @@
 
 <ion-content>
   <ion-grid>
-    <ion-item text-center>
-      <h1>{{ appName }}</h1>
-    </ion-item>
+    <ion-row class="banner">
+      <img src="assets/imgs/chops.jpg"/>
+      <img src="assets/imgs/pizza.jpg"/>
+      <img src="assets/imgs/desert.jpg"/>
+    </ion-row>
+    <ion-row>
+      <ion-item text-center>
+        <h1>{{ appName }}</h1>
+      </ion-item>
+    </ion-row>
     <ion-row justify-content-center align-items-center>
       <form [formGroup]="signinForm">
         <ion-item>
