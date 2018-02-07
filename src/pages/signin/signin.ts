@@ -85,6 +85,7 @@ export class SigninPage implements OnInit {
       .then(() => {
         loading.dismiss();
         this.navCtrl.push(HomePage);
+        form.resetForm();
       })
       .catch((error) => {
         const alert = this.alertCtrl.create({

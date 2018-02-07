@@ -52,6 +52,7 @@ export class SignupPage implements OnInit {
         });
 
         toast.present();
+        form.resetForm();
       })
       .catch(error => {
         loader.dismiss();
