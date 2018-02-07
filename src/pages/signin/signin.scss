@@ -3,6 +3,10 @@ page-signin {
     max-height: 75%;
     padding-right: 5px;
   }
+  .ion-lang {
+    position: absolute;
+    right: 0;
+  }
 
   .item-md {
     padding-right: 16px;
@@ -25,5 +29,8 @@ page-signin {
       height: 33%;
       border: 1px solid white;
     }
+  }
+  form {
+    width: 75%;
   }
 }

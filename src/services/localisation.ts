@@ -58,6 +58,10 @@ export class LocalisationService {
       'en-GB' : 'Signin error',
       'pl-PL' : 'Błąd logowania'
     },
+    signinTitle : {
+      'en-GB' : 'Sign in',
+      'pl-PL' : 'Zaloguj się'
+    }
   }
 
   getLocale() {

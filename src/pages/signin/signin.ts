@@ -31,6 +31,7 @@ export class SigninPage implements OnInit {
   signupLine1 = '';
   signupLine2 = '';
   here = '';
+  signinTitle = '';
 
   constructor(private localeService: LocalisationService,
               private globalization: Globalization,
@@ -115,5 +116,6 @@ export class SigninPage implements OnInit {
     this.signupLine1 = this.localeService.localise('signupLine1');
     this.signupLine2 = this.localeService.localise('signupLine2');
     this.here = this.localeService.localise('here');
+    this.signinTitle = this.localeService.localise('signinTitle');
   }
 }
