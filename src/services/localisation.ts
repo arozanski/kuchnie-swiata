@@ -37,6 +37,18 @@ export class LocalisationService {
     signup : {
       'en-GB' : 'Signup',
       'pl-PL' : 'Zarejestruj'
+    },
+    signupProgress : {
+      'en-GB' : 'Signing you up..',
+      'pl-PL' : 'Rejestruję konto'
+    },
+    signupError : {
+      'en-GB' : 'Signup error',
+      'pl-PL' : 'Błąd rejestracji'
+    },
+    signupConfirmation : {
+      'en-GB' : 'Account successfully created',
+      'pl-PL' : 'Rejestracja zakończona pomyślnie'
     }
   }
 

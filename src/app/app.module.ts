@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Globalization } from '@ionic-native/globalization';
 
 import { LocalisationService } from '../services/localisation';
+import { AuthService } from '../services/auth';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -41,7 +42,8 @@ import { LanguagesPage } from '../pages/languages/languages';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocalisationService,
-    Globalization
+    Globalization,
+    AuthService
   ]
 })
 export class AppModule {}

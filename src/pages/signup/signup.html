@@ -7,7 +7,7 @@
 <ion-content padding>
   <ion-grid>
     <ion-row justify-content-center align-items-center>
-      <form [formGroup]="signupForm">
+      <form [formGroup]="signupForm" #f="ngForm" (ngSubmit)="onSignup(f)">
         <ion-item>
           <ion-label stacked>{{ emailLbl }}</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
@@ -18,7 +18,7 @@
         </ion-item>
         <button
           type="submit"
-          class="signip"
+          class="signup"
           ion-button
           block round
           [disabled]="!signupForm.valid"
