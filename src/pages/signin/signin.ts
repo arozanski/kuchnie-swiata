@@ -46,7 +46,7 @@ export class SigninPage implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
-    this.refreshLocales();
+    this.refreshLocales(this.languageCode);
 
     this.globalization.getPreferredLanguage()
       .then(response => {
@@ -55,7 +55,7 @@ export class SigninPage implements OnInit {
         if (locale === 'en-GB') {
           this.localeService.setLocale(locale);
           this.locale = locale;
-          this.refreshLocales();
+          this.refreshLocales(this.languageCode);
         } else {
           this.localeService.setLocale('pl-PL');
           this.languageCode = 'pl';
@@ -71,7 +71,6 @@ export class SigninPage implements OnInit {
 
     popover.present({ev: event});
     popover.onDidDismiss((locale) => {
-      console.log(locale)
       this.refreshLocales(locale === 'en-GB' ? 'en' : 'pl');
     });
   }
@@ -94,10 +93,10 @@ export class SigninPage implements OnInit {
     this.authService.signin(value.email, value.password)
       .then(() => {
         loading.dismiss();
-        this.navCtrl.push(HomePage);
+        this.navCtrl.setRoot(HomePage);
         form.resetForm();
         this.errorCount = 0;
-        this.authService.firebase.currentUser.sendEmailVerification();
+        //this.authService.firebase.currentUser.sendEmailVerification();
       })
       .catch((error) => {
         const alert = this.alertCtrl.create({

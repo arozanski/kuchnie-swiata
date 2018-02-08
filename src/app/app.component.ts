@@ -1,20 +1,25 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import firebase from 'firebase';
 
 import { SigninPage } from '../pages/signin/signin';
+import { LogoutPage } from '../pages/logout/logout';
+import { HomePage } from '../pages/home/home';
 
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
-  rootPage:any = SigninPage;
+  rootPage = HomePage;
+  logoutPage = LogoutPage;
+  @ViewChild('nav') nav : NavController;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+              private menuCtrl: MenuController) {
     firebase.initializeApp({
       apiKey: "AIzaSyBJbAuQlURymOMCqXr_ShtnzYrl8AdlBZA",
       authDomain: "kuchnie-swiata.firebaseapp.com",
@@ -25,6 +30,19 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  ngAfterViewInit() {
+    this.nav.push(SigninPage);
+  }
+
+  onLoad(page: any) {
+    this.nav.setRoot(page);
+    this.menuCtrl.close();
+  }
+
+  onLogout() {
+
   }
 }
 
