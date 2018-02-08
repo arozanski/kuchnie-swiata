@@ -16,7 +16,7 @@ export class LanguagesPage {
     this.localisationService.setLocale(locale);
 
     setTimeout(() => {
-      this.viewCtrl.dismiss();
+      this.viewCtrl.dismiss(locale);
     }, 400);
   }
 

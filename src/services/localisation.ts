@@ -61,6 +61,30 @@ export class LocalisationService {
     signinTitle : {
       'en-GB' : 'Sign in',
       'pl-PL' : 'Zaloguj się'
+    },
+    resetPassword : {
+      'en-GB' : 'Don\'t remember password? Reset',
+      'pl-PL' : 'Nie pamiętasz hasła? Zresetuj'
+    },
+    resetPwdTitle : {
+      'en-GB' : 'Reset password',
+      'pl-PL' : 'Przypomnienie hasła'
+    },
+    resetPwdLbl : {
+      'en-GB' : 'Reset',
+      'pl-PL' : 'Resetuj'
+    },
+    resetProgress : {
+      'en-GB' : 'Resetting',
+      'pl-PL' : 'Resetuję'
+    },
+    resetError : {
+      'en-GB' : 'Unable to reset. Have you used correct email?',
+      'pl-PL' : 'Błąd. Czy aby napewno poprawny email?'
+    },
+    resetConfirmation : {
+      'en-GB' : 'Email with reset link has been sent. Check mailbox.',
+      'pl-PL' : 'Wiadomość z linkem do resetowania hasła wysłana. Sprawdź skrzynkę pocztowa'
     }
   }
 

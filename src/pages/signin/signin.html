@@ -55,5 +55,17 @@
           </a>
         </div>
     </ion-row>
+    <ion-row>
+    </ion-row>
+    <ion-row text-center class="reset-password" [ngClass]="isHidden()">
+        <div>
+          <ion-icon name="alert" text-center color="danger"></ion-icon>
+        </div>
+        <div ion-text color="light">{{ resetPassword }}
+          <a ion-text color="secondary" (click)="onResetPwdClick()">
+            {{ here }}
+          </a>
+        </div>
+    </ion-row>
   </ion-grid>
 </ion-content>

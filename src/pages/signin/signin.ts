@@ -12,6 +12,7 @@ import { Globalization } from '@ionic-native/globalization';
 import { LanguagesPage } from '../languages/languages';
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
+import { ResetPasswordPage } from '../reset-password/reset-password';
 
 import { LocalisationService } from '../../services/localisation';
 import { AuthService } from '../../services/auth';
@@ -22,7 +23,6 @@ import { AuthService } from '../../services/auth';
 })
 export class SigninPage implements OnInit {
   signinForm : FormGroup;
-  signupPage = SignupPage;
   locale = '';
   appName = '';
   emailLbl = '';
@@ -32,6 +32,9 @@ export class SigninPage implements OnInit {
   signupLine2 = '';
   here = '';
   signinTitle = '';
+  resetPassword = '';
+  errorCount = 0;
+  languageCode = 'en';
 
   constructor(private localeService: LocalisationService,
               private globalization: Globalization,
@@ -55,7 +58,9 @@ export class SigninPage implements OnInit {
           this.refreshLocales();
         } else {
           this.localeService.setLocale('pl-PL');
+          this.languageCode = 'pl';
         }
+
 
       })
       .catch(e => console.log(e));
@@ -65,13 +70,18 @@ export class SigninPage implements OnInit {
     const popover = this.popoverCtrl.create(LanguagesPage);
 
     popover.present({ev: event});
-    popover.onDidDismiss(() => {
-      this.refreshLocales();
+    popover.onDidDismiss((locale) => {
+      console.log(locale)
+      this.refreshLocales(locale === 'en-GB' ? 'en' : 'pl');
     });
   }
 
   onSignupClick() {
     this.navCtrl.push(SignupPage);
+  }
+
+  onResetPwdClick() {
+    this.navCtrl.push(ResetPasswordPage);
   }
 
   onSignin(form: NgForm) {
@@ -86,6 +96,8 @@ export class SigninPage implements OnInit {
         loading.dismiss();
         this.navCtrl.push(HomePage);
         form.resetForm();
+        this.errorCount = 0;
+        this.authService.firebase.currentUser.sendEmailVerification();
       })
       .catch((error) => {
         const alert = this.alertCtrl.create({
@@ -95,7 +107,12 @@ export class SigninPage implements OnInit {
         });
         alert.present();
         loading.dismiss();
+        this.errorCount++;
       });
+  }
+
+  isHidden() {
+    return this.errorCount < 1 ? 'hidden' : '';
   }
 
   private initializeForm() {
@@ -108,8 +125,11 @@ export class SigninPage implements OnInit {
     });
   }
 
-  private refreshLocales() {
+  private refreshLocales(languageCode) {
     this.locale = this.localeService.getLocale();
+    if (languageCode && languageCode.length > 0) {
+      this.authService.setEmailLanguageCode(languageCode);
+    }
     this.appName = this.localeService.localise('appName');
     this.passwordLbl = this.localeService.localise('password');
     this.emailLbl = this.localeService.localise('email');
@@ -118,5 +138,6 @@ export class SigninPage implements OnInit {
     this.signupLine2 = this.localeService.localise('signupLine2');
     this.here = this.localeService.localise('here');
     this.signinTitle = this.localeService.localise('signinTitle');
+    this.resetPassword = this.localeService.localise('resetPassword');
   }
 }

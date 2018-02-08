@@ -35,12 +35,16 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #0392cf,
-  secondary:  #ee4035,
-  danger:     #f53d3d,
+  secondary:  #f37736,
+  danger:     #ee4035,
   light:      #999,
   dark:       #222
 );
 
+// Helper classes
+.hidden {
+  display: none !important;
+}
 
 // App iOS Variables
 // --------------------------------------------------

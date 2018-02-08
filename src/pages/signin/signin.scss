@@ -18,10 +18,15 @@ page-signin {
   .signin {
     margin: 10px 0 20px;
   }
-  .signup-links {
+  .signup-links,
+  .reset-password {
     div {
       width: 100%;
     }
+  }
+  .reset-password {
+    padding-top: 10px;
+    margin-top: 10px;
   }
   .banner {
     img {
