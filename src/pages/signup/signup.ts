@@ -53,6 +53,7 @@ export class SignupPage implements OnInit {
 
         toast.present();
         form.resetForm();
+        this.authService.firebase.currentUser.sendEmailVerification();
       })
       .catch(error => {
         loader.dismiss();

@@ -96,7 +96,6 @@ export class SigninPage implements OnInit {
         this.navCtrl.setRoot(HomePage);
         form.resetForm();
         this.errorCount = 0;
-        //this.authService.firebase.currentUser.sendEmailVerification();
       })
       .catch((error) => {
         const alert = this.alertCtrl.create({

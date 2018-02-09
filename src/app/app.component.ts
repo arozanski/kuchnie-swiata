@@ -6,16 +6,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 
 import { SigninPage } from '../pages/signin/signin';
-import { LogoutPage } from '../pages/logout/logout';
-import { HomePage } from '../pages/home/home';
 
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
-  rootPage = HomePage;
-  logoutPage = LogoutPage;
+  rootPage = SigninPage;
   @ViewChild('nav') nav : NavController;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
@@ -42,7 +39,8 @@ export class MyApp {
   }
 
   onLogout() {
-
+    // need to add logout user
+    this.onLoad(SigninPage);
   }
 }
 
