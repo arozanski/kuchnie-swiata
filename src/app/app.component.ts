@@ -6,9 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 
 import { SigninPage } from '../pages/signin/signin';
-import { LocalisationService } from '../services/localisation';
 import { HomePage } from '../pages/home/home';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
+
+import { LocalisationService } from '../services/localisation';
+import { AuthService } from '../services/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +26,8 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private menuCtrl: MenuController,
-              private localeService: LocalisationService) {
+              private localeService: LocalisationService,
+              private authService: AuthService) {
     firebase.initializeApp({
       apiKey: "AIzaSyBJbAuQlURymOMCqXr_ShtnzYrl8AdlBZA",
       authDomain: "kuchnie-swiata.firebaseapp.com",
@@ -49,10 +52,8 @@ export class MyApp {
   onLogout() {
     let self = this;
 
-    firebase.auth().signOut().then(function() {
+    this.authService.logout(() => {
       self.onLoad(SigninPage);
-    }).catch(function(error) {
-      console.log(error)
     });
   }
 }

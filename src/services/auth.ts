@@ -1,21 +1,33 @@
 import firebase from 'firebase';
 
 export class AuthService {
-  firebase = firebase.auth();
-
   signup(email: string, password: string) {
-    return this.firebase.createUserWithEmailAndPassword(email, password);
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
   signin(email: string, password: string) {
-    return this.firebase.signInWithEmailAndPassword(email, password);
+    return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
   resetPassword(email: string) {
-    return this.firebase.sendPasswordResetEmail(email);
+    return firebase.auth().sendPasswordResetEmail(email);
   }
 
   setEmailLanguageCode(languageCode: string) {
-    this.firebase.languageCode = languageCode;
+    firebase.auth().languageCode = languageCode;
+  }
+
+  logout(action: Function) {
+    firebase.auth().signOut().then(() => {
+      if(action) {
+        action();
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  getActiveUser() {
+    return firebase.auth().currentUser;
   }
 }
