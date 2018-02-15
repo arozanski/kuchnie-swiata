@@ -6,17 +6,25 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 
 import { SigninPage } from '../pages/signin/signin';
+import { LocalisationService } from '../services/localisation';
+import { HomePage } from '../pages/home/home';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
-  rootPage = SigninPage;
+  homePage = HomePage;
+  userProfilePage = UserProfilePage;
   @ViewChild('nav') nav : NavController;
+  recipies = this.localeService.localise('recipies');
+  logout = this.localeService.localise('logout');
+  settings = this.localeService.localise('settings');
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-              private menuCtrl: MenuController) {
+              private menuCtrl: MenuController,
+              private localeService: LocalisationService) {
     firebase.initializeApp({
       apiKey: "AIzaSyBJbAuQlURymOMCqXr_ShtnzYrl8AdlBZA",
       authDomain: "kuchnie-swiata.firebaseapp.com",
@@ -39,8 +47,13 @@ export class MyApp {
   }
 
   onLogout() {
-    // need to add logout user
-    this.onLoad(SigninPage);
+    let self = this;
+
+    firebase.auth().signOut().then(function() {
+      self.onLoad(SigninPage);
+    }).catch(function(error) {
+      console.log(error)
+    });
   }
 }
 

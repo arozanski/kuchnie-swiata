@@ -12,9 +12,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
-import { LogoutPage } from '../pages/logout/logout';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { LanguagesPage } from '../pages/languages/languages';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { LanguagesPage } from '../pages/languages/languages';
     SignupPage,
     ResetPasswordPage,
     LanguagesPage,
-    LogoutPage
+    UserProfilePage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +38,7 @@ import { LanguagesPage } from '../pages/languages/languages';
     SignupPage,
     ResetPasswordPage,
     LanguagesPage,
-    LogoutPage
+    UserProfilePage
   ],
   providers: [
     StatusBar,

@@ -93,6 +93,18 @@ export class LocalisationService {
     resetConfirmation : {
       'en-GB' : 'Email with reset link has been sent. Check mailbox.',
       'pl-PL' : 'Wiadomość z linkem do resetowania hasła wysłana. Sprawdź skrzynkę pocztowa'
+    },
+    recipies : {
+      'en-GB' : 'Recipies',
+      'pl-PL' : 'Przepisy'
+    },
+    logout : {
+      'en-GB' : 'Logout',
+      'pl-PL' : 'Wyloguj'
+    },
+    settings : {
+      'en-GB' : 'User settings',
+      'pl-PL' : 'Profil użytkownika'
     }
   }
 

@@ -10,14 +10,22 @@
         ion-item
         icon-left
         (click)="onLoad(homePage)">
-        <ion-icon name="book"></ion-icon>
-        Recipes
+        <ion-icon name="book" class="menu-icon"></ion-icon>
+        {{ recipies }}
+      </button>
+      <button
+        ion-item
+        icon-left
+        (click)="onLoad(userProfilePage)">
+        <ion-icon name="settings" class="menu-icon"></ion-icon>
+        {{ settings }}
       </button>
       <button
         ion-item
         icon-left
         (click)="onLogout()">
-        Logout
+        <ion-icon name="log-out" class="menu-icon"></ion-icon>
+        {{ logout }}
       </button>
     </ion-list>
   </ion-content>
