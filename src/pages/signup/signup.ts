@@ -10,6 +10,8 @@ import {
 import { LocalisationService } from '../../services/localisation';
 import { AuthService } from '../../services/auth';
 
+import { EmailValidator } from '../../validators/email';
+
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
@@ -20,6 +22,8 @@ export class SignupPage implements OnInit {
   passwordLbl = this.localeService.localise('password');
   signupLbl = this.localeService.localise('signup');
   signupTitle = this.localeService.localise('signupTitle');
+  passwordInvalid = this.localeService.localise('passwordInvalid');
+  emailInvalid = this.localeService.localise('emailInvalid');
 
   constructor(private localeService: LocalisationService,
               private authService: AuthService,
@@ -71,8 +75,14 @@ export class SignupPage implements OnInit {
     let password = null;
 
     this.signupForm = new FormGroup({
-      'email': new FormControl(email, Validators.required),
-      'password': new FormControl(password, Validators.required)
+      'email': new FormControl(email, Validators.compose([
+        Validators.required,
+        EmailValidator.isValid
+      ])),
+      'password': new FormControl(password, Validators.compose([
+        Validators.required,
+        Validators.minLength(6)
+      ]))
     });
   }
 }

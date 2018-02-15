@@ -12,9 +12,15 @@
           <ion-label stacked>{{ emailLbl }}</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
+        <ion-item *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
+          <p class="error">{{ emailInvalid }}</p>
+        </ion-item>
         <ion-item>
           <ion-label stacked>{{ passwordLbl }}</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
+          <p class="error">{{ passwordInvalid }}</p>
         </ion-item>
         <button
           type="submit"

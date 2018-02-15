@@ -50,6 +50,14 @@ export class LocalisationService {
       'en-GB' : 'Account successfully created',
       'pl-PL' : 'Rejestracja zakończona pomyślnie'
     },
+    emailInvalid : {
+      'en-GB' : 'Email format is invalid',
+      'pl-PL' : 'Niepoprawny adres email'
+    },
+    passwordInvalid : {
+      'en-GB' : 'Password too short',
+      'pl-PL' : 'Za krótkie hasło'
+    },
     signinProgress : {
       'en-GB' : 'Signing in',
       'pl-PL' : 'Logowanie'
