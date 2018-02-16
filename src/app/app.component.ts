@@ -60,7 +60,7 @@ export class MyApp {
     });
   }
 
-  refreshLocales() {
+  private refreshLocales() {
     this.recipies = this.localeService.localise('recipies');
     this.logout = this.localeService.localise('logout');
     this.settings = this.localeService.localise('settings');
