@@ -17,6 +17,10 @@ export class AuthService {
     firebase.auth().languageCode = languageCode;
   }
 
+  sendEmailVerification() {
+    firebase.auth().currentUser.sendEmailVerification();
+  }
+
   logout(action: Function) {
     firebase.auth().signOut().then(() => {
       if(action) {
