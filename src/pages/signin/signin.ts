@@ -6,6 +6,7 @@ import {
   NavController,
   LoadingController,
   AlertController,
+  Events
 } from 'ionic-angular';
 import { Globalization } from '@ionic-native/globalization';
 
@@ -42,7 +43,8 @@ export class SigninPage implements OnInit {
               private navCtrl: NavController,
               private authService: AuthService,
               private loadingCtrl: LoadingController,
-              private alertCtrl: AlertController) {}
+              private alertCtrl: AlertController,
+              public events: Events) {}
 
   ngOnInit() {
     this.initializeForm();
@@ -96,6 +98,7 @@ export class SigninPage implements OnInit {
         this.navCtrl.setRoot(HomePage);
         form.resetForm();
         this.errorCount = 0;
+        this.events.publish('locales:update');
       })
       .catch((error) => {
         const alert = this.alertCtrl.create({

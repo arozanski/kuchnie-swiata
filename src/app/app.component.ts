@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, NavController, MenuController } from 'ionic-angular';
+import { Platform, NavController, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,11 +20,12 @@ export class MyApp {
   homePage = HomePage;
   userProfilePage = UserProfilePage;
   @ViewChild('nav') nav : NavController;
-  recipies = this.localeService.localise('recipies');
-  logout = this.localeService.localise('logout');
-  settings = this.localeService.localise('settings');
+  recipies = '';
+  logout = '';
+  settings = '';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+              public events: Events,
               private menuCtrl: MenuController,
               private localeService: LocalisationService,
               private authService: AuthService) {
@@ -38,6 +39,8 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    events.subscribe('locales:update', () => { this.refreshLocales() });
   }
 
   ngAfterViewInit() {
@@ -55,6 +58,12 @@ export class MyApp {
     this.authService.logout(() => {
       self.onLoad(SigninPage);
     });
+  }
+
+  refreshLocales() {
+    this.recipies = this.localeService.localise('recipies');
+    this.logout = this.localeService.localise('logout');
+    this.settings = this.localeService.localise('settings');
   }
 }
 
