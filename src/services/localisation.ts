@@ -105,6 +105,22 @@ export class LocalisationService {
     settings : {
       'en-GB' : 'User settings',
       'pl-PL' : 'Profil użytkownika'
+    },
+    configuration : {
+      'en-GB' : 'User profile configuration',
+      'pl-PL' : 'Ustawienia profilu użytkownika'
+    },
+    userName : {
+      'en-GB' : 'Username',
+      'pl-PL' : 'Nazwa użytkownika'
+    },
+    confInfoMessage1 : {
+      'en-GB' : 'Just quick user profile configuration.',
+      'pl-PL' : 'Szybka konfiguracja profilu użytkownika.'
+    },
+    confInfoMessage2 : {
+      'en-GB' : 'Please choose your username. You can change it later in user settings.',
+      'pl-PL' : 'Podaj nazwe użytkownika. Bedziesz mogł(a) zmienić to później na profilu użytkownika.'
     }
   }
 

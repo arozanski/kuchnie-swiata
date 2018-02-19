@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/Rx';
 
+import { NavController } from 'ionic-angular';
+
 import { Categories } from '../../models/categories';
+
+import { IntroductionPage } from '../../pages/introduction/introduction';
 
 import { LocalisationService } from '../../services/localisation';
 import { CategoryService } from '../../services/category';
@@ -16,10 +20,18 @@ export class HomePage implements OnInit {
 
   constructor(private localeService: LocalisationService,
               private categoryService: CategoryService,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private navCtrl: NavController) {}
 
   ngOnInit() {
-    this.authService.getActiveUser().getToken()
+    let user = this.authService.getActiveUser();
+
+    if (user && user.displayName === null) {
+      this.navCtrl.push(IntroductionPage);
+      return;
+    }
+
+    user.getToken()
       .then((token: string) => {
         this.categoryService.getCategories(token)
           .subscribe(

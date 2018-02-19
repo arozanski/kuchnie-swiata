@@ -9,6 +9,7 @@ import { Globalization } from '@ionic-native/globalization';
 import { LocalisationService } from '../services/localisation';
 import { AuthService } from '../services/auth';
 import { CategoryService } from '../services/category';
+import { UserService } from '../services/user';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -17,6 +18,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { LanguagesPage } from '../pages/languages/languages';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
+import { IntroductionPage } from '../pages/introduction/introduction';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
     SignupPage,
     ResetPasswordPage,
     LanguagesPage,
-    UserProfilePage
+    UserProfilePage,
+    IntroductionPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
     SignupPage,
     ResetPasswordPage,
     LanguagesPage,
-    UserProfilePage
+    UserProfilePage,
+    IntroductionPage
   ],
   providers: [
     StatusBar,
@@ -50,7 +54,8 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
     LocalisationService,
     Globalization,
     AuthService,
-    CategoryService
+    CategoryService,
+    UserService
   ]
 })
 export class AppModule {}

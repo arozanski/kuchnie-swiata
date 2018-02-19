@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title text-center>
+      <ion-icon name="settings" class="menu-icon"></ion-icon>
+      {{ configuration }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides #userProfileSlider>
+    <ion-slide>
+        <ion-row padding>
+          <p>{{ confInfoMessage1 }}</p>
+          <p>{{ confInfoMessage2 }}</p>
+        </ion-row>
+        <ion-row justify-content-center align-items-center>
+          <form [formGroup]="userProfileForm" #f="ngForm">
+            <ion-item>
+              <ion-label stacked>{{ userName }}</ion-label>
+              <ion-input type="userName" formControlName="userName"></ion-input>
+            </ion-item>
+          </form>
+        </ion-row>
+
+      <ion-footer no-shadow>
+        <ion-toolbar position="bottom">
+          <button ion-button round color="secondary"
+            [disabled]="!userProfileForm.valid"
+            (click)="goToNextSlide()">
+              Next
+          </button>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content>
+        slide 2
+      </ion-content>
+      <ion-footer no-shadow>
+        <ion-toolbar position="bottom">
+          <button ion-button round color="secondary"
+            (click)="goToNextSlide()">
+              Next
+          </button>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content>
+        finish
+      </ion-content>
+      <ion-footer no-shadow>
+        <ion-toolbar position="bottom">
+          <button ion-button round color="secondary"
+            (click)="finish()">
+              finish
+          </button>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
