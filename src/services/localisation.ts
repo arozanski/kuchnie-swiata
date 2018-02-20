@@ -108,7 +108,7 @@ export class LocalisationService {
     },
     configuration : {
       'en-GB' : 'User profile configuration',
-      'pl-PL' : 'Ustawienia profilu użytkownika'
+      'pl-PL' : 'Konfiguracja profilu użytkownika'
     },
     userName : {
       'en-GB' : 'Username',

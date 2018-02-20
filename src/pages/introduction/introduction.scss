@@ -3,6 +3,10 @@ page-introduction {
     width: 100%;
   }
 
+  .menu-icon.icon {
+    vertical-align: inherit;
+  }
+
   /** keyboard on focus issue fix **/
   .button-full-md {
     bottom: 52px;

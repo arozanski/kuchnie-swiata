@@ -3,7 +3,8 @@ import { Platform, NavController, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import firebase from 'firebase';
+import { storage, initializeApp } from 'firebase';
+import { FIREBASE_CONF } from '../config/firebase';
 
 import { SigninPage } from '../pages/signin/signin';
 import { HomePage } from '../pages/home/home';
@@ -29,10 +30,9 @@ export class MyApp {
               private menuCtrl: MenuController,
               private localeService: LocalisationService,
               private authService: AuthService) {
-    firebase.initializeApp({
-      apiKey: "AIzaSyBJbAuQlURymOMCqXr_ShtnzYrl8AdlBZA",
-      authDomain: "kuchnie-swiata.firebaseapp.com",
-    });
+
+    initializeApp(FIREBASE_CONF);
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
