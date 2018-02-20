@@ -47,7 +47,8 @@ export class IntroductionPage {
   }
 
   isKeyboardVisible() {
-    return (<any>window).Keyboard.isVisible;
+    let keyboard = (<any>window).Keyboard;
+    return keyboard ? keyboard.isVisible : false;
   }
 
   onKeydown(event) {
