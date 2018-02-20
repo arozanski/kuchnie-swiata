@@ -3,7 +3,7 @@ import { Platform, NavController, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { storage, initializeApp } from 'firebase';
+import { initializeApp } from 'firebase';
 import { FIREBASE_CONF } from '../config/firebase';
 
 import { SigninPage } from '../pages/signin/signin';
