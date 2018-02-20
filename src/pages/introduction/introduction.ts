@@ -15,11 +15,18 @@ import { UserService } from '../../services/user';
 export class IntroductionPage {
   @ViewChild(Slides) slides: Slides;
   configuration = this.localeService.localise('configuration');
-  userName = this.localeService.localise('userName');
+  userNameLabel = this.localeService.localise('userName');
+  userNameInvalid = this.localeService.localise('userNameInvalid');
   confInfoMessage1 = this.localeService.localise('confInfoMessage1');
   confInfoMessage2 = this.localeService.localise('confInfoMessage2');
+  confInfoMessage3 = this.localeService.localise('confInfoMessage3');
+  confInfoMessage4 = this.localeService.localise('confInfoMessage4');
+  next = this.localeService.localise('next');
+  finish = this.localeService.localise('finish');
+  close = this.localeService.localise('close');
   userProfileForm: FormGroup;
   unregisterBackButtonAction: any;
+  userName = '';
 
   constructor(private navCrtl: NavController,
               private localeService: LocalisationService,
@@ -62,29 +69,32 @@ export class IntroductionPage {
   goToSlide(slide: number) {
     switch(slide) {
       case 2: {
-        this.userService.updateUserName(
-          this.userProfileForm.value.userName)
-            .then(() => {
-              this.slides.lockSwipes(false);
-              this.slides.slideNext();
-              this.slides.lockSwipes(true);
-            })
-            .catch((error) => { console.log(error); });
+        this.userName = this.userProfileForm.value.userName;
+
+        this.userService.updateUserName(this.userName)
+          .then(() => {
+            this.goToNextSlide();
+          })
+          .catch((error) => { console.log(error); });
         break;
       }
       case 3: {
-        console.log('case 3');
+        this.goToNextSlide();
         break;
       }
       default:;
     }
   }
 
-  goToSlide3() {
-    this.slides.slideNext();
+  goToNextSlide() {
+    let slides = this.slides;
+
+    slides.lockSwipes(false);
+    slides.slideNext();
+    slides.lockSwipes(true);
   }
 
-  finish() {
+  finishConfiguration() {
     this.navCrtl.setRoot(HomePage);
   }
 }

@@ -121,6 +121,30 @@ export class LocalisationService {
     confInfoMessage2 : {
       'en-GB' : 'Please choose your username. You can change it later in user settings.',
       'pl-PL' : 'Podaj nazwe użytkownika. Bedziesz mogł(a) zmienić to później na profilu użytkownika.'
+    },
+    confInfoMessage3 : {
+      'en-GB' : 'Last thing, choose one of the avatars',
+      'pl-PL' : 'Ostatni krok, wybierz jeden z awatarów'
+    },
+    confInfoMessage4 : {
+      'en-GB' : 'or take a picture!',
+      'pl-PL' : 'albo zrób sobie zdjęcie!'
+    },
+    userNameInvalid : {
+      'en-GB' : 'Username too short',
+      'pl-PL' : 'Nazwa użytkownika za krótka'
+    },
+    next : {
+      'en-GB' : 'Next step',
+      'pl-PL' : 'Kolejny krok'
+    },
+    finish : {
+      'en-GB' : 'Finish setup',
+      'pl-PL' : 'Zakończ konfigurację'
+    },
+    close : {
+      'en-GB' : 'Close',
+      'pl-PL' : 'Zamknij'
     }
   }
 

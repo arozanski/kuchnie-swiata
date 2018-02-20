@@ -18,24 +18,29 @@
               <ion-label stacked>{{ userName }}</ion-label>
               <ion-input type="userName" formControlName="userName"></ion-input>
             </ion-item>
+            <ion-item no-lines *ngIf="!userProfileForm.controls.userName.valid  && userProfileForm.controls.userName.dirty">
+              <p class="error">{{ userNameInvalid }}</p>
+            </ion-item>
           </form>
           <button ion-button full color="secondary"
             [disabled]="!userProfileForm.valid"
             (window:keydown)="onKeydown($event)"
             (click)="goToSlide(2)">
-              Next
+            {{ next }}
           </button>
         </ion-row>
     </ion-slide>
 
     <ion-slide>
-      <ion-row>
-        slide 2
+      <ion-row justify-content-center align-items-center text-center>
+        <h1>Hey <span ion-text color="primary">{{ userName }}!</span></h1>
+        <p>{{ confInfoMessage3 }}</p>
+        <p>{{ confInfoMessage4 }}</p>
       </ion-row>
       <ion-row>
         <button ion-button full color="secondary"
           (click)="goToSlide(3)">
-            Next
+            {{ finish }}
         </button>
       </ion-row>
     </ion-slide>
@@ -47,8 +52,8 @@
       <ion-footer no-shadow>
         <ion-toolbar position="bottom">
           <button ion-button round color="secondary"
-            (click)="finish()">
-              finish
+            (click)="finishConfiguration()">
+              {{ close }}
           </button>
         </ion-toolbar>
       </ion-footer>
