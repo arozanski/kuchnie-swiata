@@ -9,43 +9,35 @@
 
 <ion-content>
   <ion-slides #userProfileSlider>
-    <ion-slide>
-        <ion-row padding>
+    <ion-slide [class.focused-with-keyboard-on]="isKeyboardVisible()">
+        <ion-row justify-content-center align-items-center text-center>
           <p>{{ confInfoMessage1 }}</p>
           <p>{{ confInfoMessage2 }}</p>
-        </ion-row>
-        <ion-row justify-content-center align-items-center>
           <form [formGroup]="userProfileForm" #f="ngForm">
             <ion-item>
               <ion-label stacked>{{ userName }}</ion-label>
               <ion-input type="userName" formControlName="userName"></ion-input>
             </ion-item>
           </form>
-        </ion-row>
-
-      <ion-footer no-shadow>
-        <ion-toolbar position="bottom">
-          <button ion-button round color="secondary"
+          <button ion-button full color="secondary"
             [disabled]="!userProfileForm.valid"
-            (click)="goToNextSlide()">
+            (window:keydown)="onKeydown($event)"
+            (click)="goToSlide(2)">
               Next
           </button>
-        </ion-toolbar>
-      </ion-footer>
+        </ion-row>
     </ion-slide>
 
     <ion-slide>
-      <ion-content>
+      <ion-row>
         slide 2
-      </ion-content>
-      <ion-footer no-shadow>
-        <ion-toolbar position="bottom">
-          <button ion-button round color="secondary"
-            (click)="goToNextSlide()">
-              Next
-          </button>
-        </ion-toolbar>
-      </ion-footer>
+      </ion-row>
+      <ion-row>
+        <button ion-button full color="secondary"
+          (click)="goToSlide(3)">
+            Next
+        </button>
+      </ion-row>
     </ion-slide>
 
     <ion-slide>

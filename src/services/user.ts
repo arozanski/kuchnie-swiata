@@ -8,6 +8,9 @@ export class UserService {
   updateUserName(name: string) {
     let user = this.authService.getActiveUser();
 
-    return user.updateProfile({ displayName: name });
+    return user.updateProfile({
+      displayName: name,
+      photoURL: ''
+    });
   }
 }
