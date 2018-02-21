@@ -66,6 +66,7 @@ export class SigninPage implements OnInit {
 
       })
       .catch(e => console.log(e));
+      this.onSignin();
   }
 
   onLanguageChange(event: MouseEvent) {

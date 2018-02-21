@@ -7,6 +7,14 @@ page-introduction {
     vertical-align: inherit;
   }
 
+  .predefined-avatar {
+    padding: 0;
+
+    img {
+      background: #fff;
+    }
+  }
+
   .avatar-preview {
     margin: 10px auto;
     background: #fff;

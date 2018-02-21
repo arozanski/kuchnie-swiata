@@ -29,7 +29,8 @@ export class IntroductionPage {
   userProfileForm: FormGroup;
   unregisterBackButtonAction: any;
   userName = '';
-  avatarURL = '';
+  avatarURL = this.setAvatarUrl('avatars/7.png');
+  avatars = this.setAvatars();
 
   constructor(private navCrtl: NavController,
               private localeService: LocalisationService,
@@ -127,6 +128,26 @@ export class IntroductionPage {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  setAvatars() {
+    let array = [];
+
+    for (let i = 6; i > 0; i--) {
+      let ref = `avatars/${i}.png`;
+
+      storage().ref(ref).getDownloadURL()
+        .then((url) => {
+          array.push({
+            src: url,
+            ref: ref });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    return array;
   }
 
   goToNextSlide() {
