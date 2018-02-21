@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Globalization } from '@ionic-native/globalization';
+import { Camera } from '@ionic-native/camera';
 
 import { LocalisationService } from '../services/localisation';
 import { AuthService } from '../services/auth';
@@ -53,6 +54,7 @@ import { IntroductionPage } from '../pages/introduction/introduction';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocalisationService,
     Globalization,
+    Camera,
     AuthService,
     CategoryService,
     UserService

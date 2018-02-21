@@ -13,4 +13,8 @@ export class UserService {
       photoURL: ''
     });
   }
+
+  getUID() {
+    return this.authService.getActiveUser().uid;
+  }
 }

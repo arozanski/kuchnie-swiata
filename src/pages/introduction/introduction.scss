@@ -7,6 +7,15 @@ page-introduction {
     vertical-align: inherit;
   }
 
+  .avatar-preview {
+    margin: 10px auto;
+    background: #fff;
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
   /** keyboard on focus issue fix **/
   .button-full-md {
     bottom: 52px;
