@@ -23,7 +23,9 @@ export class IntroductionPage {
   confInfoMessage2 = this.localeService.localise('confInfoMessage2');
   confInfoMessage3 = this.localeService.localise('confInfoMessage3');
   confInfoMessage4 = this.localeService.localise('confInfoMessage4');
+  confInfoMessage5 = this.localeService.localise('confInfoMessage5');
   next = this.localeService.localise('next');
+  congratulations = this.localeService.localise('congratulations');
   finish = this.localeService.localise('finish');
   close = this.localeService.localise('close');
   userProfileForm: FormGroup;
@@ -73,19 +75,24 @@ export class IntroductionPage {
 
   goToSlide(slide: number) {
     switch(slide) {
-      case 2: {
+      case 1: {
         this.userName = this.userProfileForm.value.userName;
-
-        this.userService.updateUserName(this.userName)
-          .then(() => {
+        this.goToNextSlide();
+        break;
+      }
+      case 2: {
+        this.userService.updateUserName({
+          displayName: this.userName,
+          photoURL: this.avatarURL
+        }).then(() => {
             this.goToNextSlide();
           })
           .catch((error) => { console.log(error); });
         break;
       }
       case 3: {
-        this.goToNextSlide();
-        break;
+        this.navCrtl.setRoot(HomePage);
+        break
       }
       default:;
     }
@@ -156,9 +163,5 @@ export class IntroductionPage {
     slides.lockSwipes(false);
     slides.slideNext();
     slides.lockSwipes(true);
-  }
-
-  finishConfiguration() {
-    this.navCrtl.setRoot(HomePage);
   }
 }

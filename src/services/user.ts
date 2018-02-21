@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth';
 
+import { User } from '../models/user';
+
 @Injectable()
 export class UserService {
   constructor(private authService: AuthService) {}
 
-  updateUserName(name: string) {
-    let user = this.authService.getActiveUser();
+  updateUserName(user: User) {
+    let activeUser = this.authService.getActiveUser();
 
-    return user.updateProfile({
-      displayName: name,
-      photoURL: ''
+    return activeUser.updateProfile({
+      displayName: user.displayName,
+      photoURL: user.photoURL
     });
   }
 

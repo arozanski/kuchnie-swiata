@@ -130,6 +130,10 @@ export class LocalisationService {
       'en-GB' : 'or take a picture!',
       'pl-PL' : 'albo zrób sobie zdjęcie!'
     },
+    confInfoMessage5 : {
+      'en-GB' : 'Your user profile is complete now and you can start using app',
+      'pl-PL' : 'Twój profil użytkownika jest gotowy i możesz rozpocząć z korzystania aplikacji'
+    },
     userNameInvalid : {
       'en-GB' : 'Username too short',
       'pl-PL' : 'Nazwa użytkownika za krótka'
@@ -145,6 +149,10 @@ export class LocalisationService {
     close : {
       'en-GB' : 'Close',
       'pl-PL' : 'Zamknij'
+    },
+    congratulations : {
+      'en-GB': 'Congratulations!',
+      'pl-PL': 'Gratulacje!',
     }
   }
 

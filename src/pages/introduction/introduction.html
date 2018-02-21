@@ -25,7 +25,7 @@
           <button ion-button full color="secondary"
             [disabled]="!userProfileForm.valid"
             (window:keydown)="onKeydown($event)"
-            (click)="goToSlide(2)">
+            (click)="goToSlide(1)">
             {{ next }}
           </button>
         </ion-row>
@@ -54,25 +54,26 @@
       </ion-row>
       <ion-row>
         <button ion-button full color="secondary"
-          (click)="goToSlide(3)">
+          (click)="goToSlide(2)">
             {{ finish }}
         </button>
       </ion-row>
     </ion-slide>
 
     <ion-slide>
-      <ion-content>
-        finish
-      </ion-content>
-      <ion-footer no-shadow>
-        <ion-toolbar position="bottom">
-          <button ion-button round color="secondary"
-            (click)="finishConfiguration()">
-              {{ close }}
-          </button>
-        </ion-toolbar>
-      </ion-footer>
+      <ion-row justify-content-center padding>
+        <h2>{{ congratulations }}</h2>
+        <p>{{ confInfoMessage5 }}</p>
+      </ion-row>
+      <ion-row justify-content-center>
+         <ion-icon name="done-all" class="large-icon" color="primary"></ion-icon>
+      </ion-row>
+      <ion-row>
+        <button ion-button full color="secondary"
+          (click)="goToSlide(3)">
+            {{ close }}
+        </button>
+      </ion-row>
     </ion-slide>
-
   </ion-slides>
 </ion-content>
