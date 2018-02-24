@@ -151,8 +151,20 @@ export class LocalisationService {
       'pl-PL' : 'Zamknij'
     },
     congratulations : {
-      'en-GB': 'Congratulations!',
-      'pl-PL': 'Gratulacje!',
+      'en-GB' : 'Congratulations!',
+      'pl-PL' : 'Gratulacje!',
+    },
+    save : {
+      'en-GB' : 'Save changes',
+      'pl-PL' : 'Zapisz zmiany'
+    },
+    avatarChange : {
+      'en-GB' : 'Avatar updated',
+      'pl-PL' : 'Awatar zmieniony'
+    },
+    saveSucess : {
+      'en-GB' : 'Changes saved',
+      'pl-PL' : 'Zmiany zapisane'
     }
   }
 

@@ -6,12 +6,54 @@
       </button>
     </ion-buttons>
     <ion-title text-center>
-      Kuchnie swiata
+      {{ settings }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-settings
+  <form [formGroup]="userProfileForm" #f="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-9>
+          <ion-item>
+            <ion-label stacked>{{ userNameLabel }}</ion-label>
+            <ion-input type="userName" formControlName="userName"></ion-input>
+          </ion-item>
+          <ion-item no-lines *ngIf="!userProfileForm.controls.userName.valid  && userProfileForm.controls.userName.dirty">
+            <p class="error">{{ userNameInvalid }}</p>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <button icon-only ion-button clear class="edit" (click)="enable()">
+            <ion-icon name="create"></ion-icon>
+          </button>
+          <button icon-only ion-button clear class="save-btn"
+            [disabled]="!userProfileForm.controls.userName.valid"
+            (click)="saveChanges('name')">
+            <ion-img class="save" with="30px" height="30px" color="primary" src="assets/icon/save.svg"></ion-img>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="avatar-wrapper">
+        <ion-col col-12 text-center>
+          <ion-img class="avatar" width="200px" height="200px" src="{{ avatarUrl }}"></ion-img>
+        </ion-col>
+        <ion-col col-12>
+          <ion-row>
+            <ion-col class="predefined-avatar" *ngFor="let item of avatars;">
+              <img width="50px" height="50px" src="{{ item.src }}"
+                (click)="setAvatarUrl(item.ref)"/>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col col-12 text-center>
+          <button ion-button icon-only color="secondary" round
+            (click)="takePhoto()">
+            <ion-icon name="camera"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

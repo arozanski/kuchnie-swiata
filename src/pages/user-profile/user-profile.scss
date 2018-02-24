@@ -2,4 +2,22 @@ page-user-profile {
   .menu-button {
     margin-right: -44px;
   }
+  .edit, .save-btn {
+    margin: 20px 0 0 0;
+  }
+  .save {
+    margin-top: 9px;
+  }
+  .avatar {
+    img {
+      margin: 0 auto;
+      background: #fff;
+    }
+  }
+  .avatar-wrapper {
+    margin-top: 20px;
+  }
+  .predefined-avatar {
+    padding: 0;
+  }
 }
