@@ -20,6 +20,9 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { LanguagesPage } from '../pages/languages/languages';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { IntroductionPage } from '../pages/introduction/introduction';
+import { CategoryPage } from '../pages/category/category';
+import { RecipeViewPage } from '../pages/recipe/recipe-view/recipe-view';
+import { RecipeEditPage } from '../pages/recipe/recipe-edit/recipe-edit';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { IntroductionPage } from '../pages/introduction/introduction';
     ResetPasswordPage,
     LanguagesPage,
     UserProfilePage,
-    IntroductionPage
+    IntroductionPage,
+    CategoryPage,
+    RecipeViewPage,
+    RecipeEditPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,10 @@ import { IntroductionPage } from '../pages/introduction/introduction';
     ResetPasswordPage,
     LanguagesPage,
     UserProfilePage,
-    IntroductionPage
+    IntroductionPage,
+    CategoryPage,
+    RecipeViewPage,
+    RecipeEditPage
   ],
   providers: [
     StatusBar,
