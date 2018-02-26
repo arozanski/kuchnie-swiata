@@ -2,4 +2,24 @@ page-home {
   .menu-button {
     margin-right: -44px;
   }
+  ion-col[col-4] {
+    padding: 0;
+
+    .card-md {
+      margin: 5px;
+      width: calc(100% - 10px);
+    }
+
+    .card-content-md {
+      padding: 5px;
+    }
+
+    .card-title-md {
+      font-size: 1.2rem;
+      padding: 0;
+    }
+  }
+  .region:first-child {
+    margin-top: 10px;
+  }
 }

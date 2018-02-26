@@ -165,6 +165,38 @@ export class LocalisationService {
     saveSucess : {
       'en-GB' : 'Changes saved',
       'pl-PL' : 'Zmiany zapisane'
+    },
+    categoryTitle : {
+      'en-GB' : 'Choose category',
+      'pl-PL' : 'Wybierz kategorie'
+    },
+    orRegion : {
+      'en-GB' : 'or origin',
+      'pl-PL' : 'lub region'
+    },
+    grill : {
+      'en-GB' : 'BBQ Sizzle',
+      'pl-PL' : 'Grillowanko'
+    },
+    soups : {
+      'en-GB' : 'Soups & curries',
+      'pl-PL' : 'Zupy i curry'
+    },
+    starters : {
+      'en-GB' : 'Starters',
+      'pl-PL' : 'Przystawki'
+    },
+    deserts : {
+      'en-GB' : 'Deserts',
+      'pl-PL' : 'Desery'
+    },
+    main : {
+      'en-GB' : 'Main dishes',
+      'pl-PL' : 'Dania główne'
+    },
+    cocktails : {
+      'en-GB' : 'Cocktails',
+      'pl-PL' : 'Drinki'
     }
   }
 

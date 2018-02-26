@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 
-import { Categories } from '../models/categories';
+import { Category } from '../models/category';
 
 @Injectable()
 export class CategoryService {
   url = 'https://kuchnie-swiata.firebaseio.com/';
-  private categories: Categories[] = [];
+  private categories: Category[];
 
   constructor(private http: Http) {}
 

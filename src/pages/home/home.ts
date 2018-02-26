@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/Rx';
-
+import { storage } from 'firebase';
 import { NavController } from 'ionic-angular';
 
-import { Categories } from '../../models/categories';
+import { Category } from '../../models/category';
 
 import { IntroductionPage } from '../../pages/introduction/introduction';
 
@@ -17,6 +17,9 @@ import { AuthService } from '../../services/auth';
 })
 export class HomePage implements OnInit {
   appName = this.localeService.localise('appName');
+  categoryTitle = this.localeService.localise('categoryTitle');
+  orRegion = this.localeService.localise('orRegion');
+  categories : Category[];
 
   constructor(private localeService: LocalisationService,
               private categoryService: CategoryService,
@@ -35,8 +38,24 @@ export class HomePage implements OnInit {
       .then((token: string) => {
         this.categoryService.getCategories(token)
           .subscribe(
-            (categories: Categories[]) => {
-              console.log(categories);
+            (categories: Category[]) => {
+              let categoryTmp = [];
+
+              for (let i of categories) {
+                storage().ref(i.img).getDownloadURL()
+                  .then((url) => {
+                    categoryTmp.push({
+                      src: url,
+                      name: this.localeService.localise(i.name),
+                      order: i.order
+                    });
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }
+
+              this.categories = categoryTmp;
             },
             (error) => { console.log(error); }
           );
