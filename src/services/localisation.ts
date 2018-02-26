@@ -166,6 +166,10 @@ export class LocalisationService {
       'en-GB' : 'Changes saved',
       'pl-PL' : 'Zmiany zapisane'
     },
+    category : {
+      'en-GB' : 'Category',
+      'pl-PL' : 'Kategoria'
+    },
     categoryTitle : {
       'en-GB' : 'Choose category',
       'pl-PL' : 'Wybierz kategorie'

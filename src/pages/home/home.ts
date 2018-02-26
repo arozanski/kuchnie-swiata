@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
 import { Category } from '../../models/category';
 
 import { IntroductionPage } from '../../pages/introduction/introduction';
+import { CategoryPage } from '../../pages/category/category';
 
 import { LocalisationService } from '../../services/localisation';
 import { CategoryService } from '../../services/category';
@@ -46,8 +47,9 @@ export class HomePage implements OnInit {
                   .then((url) => {
                     categoryTmp.push({
                       src: url,
-                      name: this.localeService.localise(i.name),
-                      order: i.order
+                      label: this.localeService.localise(i.name),
+                      order: i.order,
+                      name: i.name
                     });
                   })
                   .catch((error) => {
@@ -60,5 +62,12 @@ export class HomePage implements OnInit {
             (error) => { console.log(error); }
           );
       });
+  }
+
+  onCategoryClick(category: string) {
+    this.navCtrl.push(CategoryPage, {
+      categoryName : category,
+      categoryLabel :  this.localeService.localise(category)
+    });
   }
 }

@@ -20,11 +20,11 @@
     </ion-row>
     <ion-row>
       <ion-col col-4 *ngFor="let category of categories">
-        <ion-card>
+        <ion-card (click)="onCategoryClick(category.name)">
           <img src="{{ category.src }}"/>
           <ion-card-content>
             <ion-card-title text-center>
-              {{ category.name }}
+              {{ category.label }}
             </ion-card-title>
           </ion-card-content>
         </ion-card>
