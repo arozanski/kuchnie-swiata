@@ -11,6 +11,7 @@ export class CategoryPage implements OnInit {
   categoryLabel: string;
   categoryName: string;
   category = this.localeService.localise('category');
+  loadingRecipies = this.localeService.localise('loadingRecipies');
 
   constructor(private navParams: NavParams,
               private localeService: LocalisationService) {}

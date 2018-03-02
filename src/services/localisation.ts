@@ -201,6 +201,10 @@ export class LocalisationService {
     cocktails : {
       'en-GB' : 'Cocktails',
       'pl-PL' : 'Drinki'
+    },
+    loadingRecipies : {
+      'en-GB' : 'Loading recipies',
+      'pl-PL' : 'Ładowanie przepisów'
     }
   }
 
