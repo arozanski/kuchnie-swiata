@@ -205,6 +205,14 @@ export class LocalisationService {
     loadingRecipies : {
       'en-GB' : 'Loading recipies',
       'pl-PL' : 'Ładowanie przepisów'
+    },
+    editRecipe : {
+      'en-GB' : 'Edit recipe',
+      'pl-PL' : 'Zmiana przepisu'
+    },
+    addRecipe : {
+      'en-GB' : 'Add recipe',
+      'pl-PL' : 'Dodaj przepis'
     }
   }
 

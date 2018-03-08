@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ModalController } from 'ionic-angular';
+
+import { RecipeEditPage } from '../recipe/recipe-edit/recipe-edit';
 
 import { LocalisationService } from '../../services/localisation';
 
@@ -14,10 +16,17 @@ export class CategoryPage implements OnInit {
   loadingRecipies = this.localeService.localise('loadingRecipies');
 
   constructor(private navParams: NavParams,
-              private localeService: LocalisationService) {}
+              private localeService: LocalisationService,
+              public modalController: ModalController) {}
 
   ngOnInit() {
     this.categoryLabel = this.navParams.get('categoryLabel');
     this.categoryName = this.navParams.get('categoryName');
+  }
+
+  onAddRecipe() {
+    const modal = this.modalController.create(RecipeEditPage, { edit: false });
+
+    modal.present();
   }
 }
