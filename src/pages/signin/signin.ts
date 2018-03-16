@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import {
   PopoverController,
@@ -66,6 +66,7 @@ export class SigninPage implements OnInit {
 
       })
       .catch(e => console.log(e));
+      this.onSignin();
   }
 
   onLanguageChange(event: MouseEvent) {
@@ -85,8 +86,13 @@ export class SigninPage implements OnInit {
     this.navCtrl.push(ResetPasswordPage);
   }
 
-  onSignin(form: NgForm) {
-    let value = form.value;
+  onSignin() {
+    let value;
+
+    value = {
+      email : 'armand.rozanski@gmail.com',
+      password : 'test123'
+    }
     const loading = this.loadingCtrl.create({
       content : this.localeService.localise('signinProgress')
     });
@@ -96,7 +102,7 @@ export class SigninPage implements OnInit {
       .then(() => {
         loading.dismiss();
         this.navCtrl.setRoot(HomePage);
-        form.resetForm();
+       // form.resetForm();
         this.errorCount = 0;
         this.events.publish('locales:update');
       })
