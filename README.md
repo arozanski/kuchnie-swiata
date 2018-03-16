@@ -4,7 +4,7 @@
 Node (v6), NPM.
 Also, make sure that you have ionic, cordova and typescript.
 
-    $ npm install -g ionic cordova typescript
+  $ npm install -g ionic cordova typescript
 
 ## Installation
   $ npm install
@@ -23,3 +23,6 @@ Browser url: http://localhost:8100/
 
   $ ionic generate page [page_name]
 
+## Other stuff
+
+  Color palette http://www.color-hex.com/color-palette/807
